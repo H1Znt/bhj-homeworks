@@ -1,14 +1,3 @@
-// hole.classList.contains('hole_has-mole')
-// const hole = document.getElementsByClassName('hole-game');
-
-// function we(){
-
-// }
-
-// hole.forEach(holeItem => {
-//   holeItem.addEventListener('click', )
-// })
-
 const hole = document.querySelector('.hole-game');
 const deadHole = document.getElementById('dead')
 const lostHole = document.getElementById('lost')
