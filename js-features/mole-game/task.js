@@ -6,7 +6,8 @@ function clickHole () {
   deadHole.textContent++
   if (deadHole.textContent === '10') {
     alert('Вы победили!')
-    location.reload()
+    deadHole.textContent = '0'
+    lostHole.textContent = '0'
   }
 }
 
@@ -14,7 +15,8 @@ function clickLostHole () {
   lostHole.textContent++;
   if (lostHole.textContent === '5') {
     alert('Вы проиграли')
-    location.reload()
+    deadHole.textContent = '0'
+    lostHole.textContent = '0'
   }
 }
 
