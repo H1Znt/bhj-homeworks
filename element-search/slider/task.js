@@ -11,15 +11,12 @@ function handler(img) {
     } else {
       item.classList.remove("slider__item_active");
     }
-
-    console.log(counter);
   });
 }
 
 sliderArrowNext.addEventListener("click", () => {
   if (counter < sliderCount - 1) {
     counter++;
-    console.log(counter);
     handler(sliderItem);
   } else {
     counter = 0;
@@ -30,7 +27,6 @@ sliderArrowNext.addEventListener("click", () => {
 sliderArrowPrev.addEventListener("click", () => {
   if (counter > 0) {
     counter--;
-    console.log(counter);
     handler(sliderItem);
   } else {
     counter = sliderCount - 1;
