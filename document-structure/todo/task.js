@@ -1,4 +1,5 @@
 const applicantForm = document.getElementById('tasks__form')
+const tasksList = document.getElementById('tasks__list');
 
 function serializeForm(formNode) {
   const { elements } = formNode
@@ -14,10 +15,9 @@ function serializeForm(formNode) {
   if (element) {
     createNode(element);
   }
-
   resetForm()
 
-  deleteNode(applicantForm.nextSibling)
+  deleteNode(tasksList.firstElementChild);
 }
 
 function deleteNode(node) {
@@ -35,6 +35,7 @@ function resetForm () {
 function createNode (data) {
   const parent = document.createElement("div");
   parent.classList.add('task');
+
   const child = document.createElement("div");
   const link = document.createElement("a");
 
@@ -48,7 +49,7 @@ function createNode (data) {
   parent.append(child);
   parent.append(link);
 
-  applicantForm.insertAdjacentElement('afterend',  parent)
+  tasksList.insertAdjacentElement('afterbegin',  parent)
 }
 
 function handleFormSubmit(event) {
