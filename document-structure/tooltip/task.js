@@ -20,7 +20,6 @@ function createNode (el) {
   if (!el) return;
 
   let rect = el.getBoundingClientRect();
-  console.log(rect)
   let title = el.title;
 
   let newDiv = document.createElement("div")
@@ -28,7 +27,7 @@ function createNode (el) {
   newDiv.textContent = `${title}`;
   newDiv.classList.add('tooltip');
   newDiv.style.left = rect.x + "px";
-  newDiv.style.top = rect.y + el.clienHeight + "px";
+  newDiv.style.top = rect.y + rect.clientHeight + "px";
 
   el.insertAdjacentElement("afterend", newDiv)
 }
