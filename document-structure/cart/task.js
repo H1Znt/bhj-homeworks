@@ -2,7 +2,6 @@ const productsBtn = document.querySelectorAll('.product__add');
 const cartProductsList = document.querySelector('.cart__products');
 const productQuantityControlDec = document.querySelectorAll('.product__quantity-control_dec'); // -
 const productQuantityControlInc = document.querySelectorAll('.product__quantity-control_inc'); // +
-// let counter = 1;
 
 function generateCartProduct(img, value, id) {
   return `
@@ -51,7 +50,6 @@ productsBtn.forEach(el => {
     let value = parent.querySelector('.product__quantity-value').textContent;
 
     cartProductsList.insertAdjacentHTML('afterbegin', generateCartProduct(img, value, id))
-    counter = 1;
 
   }, {once: true})
 
