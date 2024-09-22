@@ -49,8 +49,15 @@ productsBtn.forEach(el => {
     let img = parent.querySelector('.product__image').getAttribute('src');
     let value = parent.querySelector('.product__quantity-value').textContent;
 
-    cartProductsList.insertAdjacentHTML('afterbegin', generateCartProduct(img, value, id))
+    const cards = [...document.querySelectorAll('.cart__product')].find(e => e.dataset.id === id);
+    
+    if (cards) {
+      let counter = cards.querySelector('.cart__product-count').textContent;
+      counter = Number(counter) + Number(value);
+      cards.querySelector('.cart__product-count').textContent = counter;
 
-  }, {once: true})
-
+    } else {
+      cartProductsList.insertAdjacentHTML('afterbegin', generateCartProduct(img, value, id))
+    }
+  })
 })
