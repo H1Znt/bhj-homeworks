@@ -1,39 +1,26 @@
-
-// --------------- Не удалось выполнить задание ----------
-// Ипользовал те же методы что и в лекциях, но без результатов 
-// Стоит ли использовать обработчик событий с собтыием Progress? (xhr.upload.addEventListener('progress'))
-
-
 const progress = document.getElementById('progress');
+const file = document.getElementById('file');
 const form = document.getElementById('form');
 
-form.addEventListener('submit', (e) => {
+form.addEventListener('submit', e => {
   e.preventDefault();
-
-  const xhr = new XMLHttpRequest();
-
-  xhr.addEventListener('readystatechange', () => {
-
-    if (xhr.readyState === xhr.DONE) {
-      progress.value = 1;
-    } else if (xhr.readyState === xhr.OPENED ) {
-      progress.value = 0.2;
-    } else if (xhr.readyState === xhr.LOADING  ) {
-      progress.value = 0.7;
-    } 
-
-    if (xhr.status != 200) {
-      alert(xhr.status + ': ' + xhr.statusText);
-    } else {
-      form.reset()
-      progress.value = 0;
-      document.querySelector('.input__wrapper-desc').innerHTML = "Имя файла...";
-    }
-  })
-
-  xhr.open('POST', '/form/');
 
   const formData = new FormData(form);
 
-  xhr.send(formData);
+  const xhr = new XMLHttpRequest();
+  xhr.open('POST', 'https://students.netoservices.ru/nestjs-backend/upload');
+
+  xhr.upload.addEventListener('progress', e => {
+    progress.value = (e.loaded / e.total);
+  })
+
+  xhr.addEventListener('load', () => {
+    console.log(`Запрос отправлен`)
+  })
+
+  xhr.addEventListener('error', () => {
+    console.log(`Ошибка запроса: ${xhr.status}`)
+  })
+
+  xhr.send(formData)
 })
