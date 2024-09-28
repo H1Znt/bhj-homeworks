@@ -7,11 +7,7 @@ editor.addEventListener('input', () => {
 function setlocalStorage () { 
   localStorage.setItem('userText', editor.value.toString()); 
 } 
- 
-const keys = Object.keys(localStorage); 
- 
-for (let key of keys) { 
-  if (key === 'userText') { 
-    editor.value = localStorage.getItem(key) 
-  } 
+
+if (localStorage.getItem('userText')) {
+  editor.value = localStorage.getItem('userText')
 }
